@@ -11,27 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :street_address %>
-    <%= form.text_field :street_address, id: :location_street_address %>
+    <%= form.text_field :street_address, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :city %>
-    <%= form.text_field :city, id: :location_city %>
+    <%= form.text_field :city, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude, id: :location_latitude %>
-  </div>
 
-  <div class="field">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude, id: :location_longitude %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <%= form.submit 'Find My Bus!', class: 'btn btn-info' %>
   </div>
 <% end %>
