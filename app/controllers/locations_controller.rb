@@ -1,5 +1,8 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  
+  include LocationsHelper
+  
 
   # GET /locations
   # GET /locations.json
@@ -10,6 +13,14 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.json
   def show
+   bus_api_url = "http://developer.itsmarta.com/BRDRestService/RestBusRealTimeService/GetAllBus"
+    
+    @buses = fetch_buses_from_api(bus_api_url)
+    
+    @buses.select! do |bus|
+      is_nearby?(@location.latitude, @location.longitude, bus["LATITUDE"], bus["LONGITUDE"])
+      
+    end
   end
 
   # GET /locations/new
